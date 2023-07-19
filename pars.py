@@ -3,6 +3,8 @@ import xlsxwriter
 import time
 import datetime
 from config import api_id, api_hash
+from keywords import keywords
+from chat_links import chat_links
 
 
 def fetch_messages_from_chats(chat_links, keywords):
@@ -75,84 +77,6 @@ def fetch_messages_from_chats(chat_links, keywords):
     # Calculate execution time
     execution_time = time.time() - start_time
     print(f"Execution time: {execution_time} seconds")
-
-
-# List of chat links
-chat_links = [
-    "https://t.me/thailand_popychiki_znakomstva",
-    "https://t.me/phuket_thailand_chat",
-    "https://t.me/phuket_kypi_prodai",
-    "https://t.me/mama_phuket",
-    "https://t.me/phuket_crypto_mafia",
-    "https://t.me/phuket_krasota_devyshki",
-    "https://t.me/phuket_services",
-    "https://t.me/phuket",
-    "https://t.me/phuket_talk",
-    "https://t.me/phuketvse",
-    "https://t.me/smelovtai",
-    "https://t.me/REALPHUKET",
-    "https://t.me/phuketrai",
-    "https://t.me/BB_Phuket",
-    "https://t.me/Phuketpa",
-    "https://t.me/gophuket",
-    "https://t.me/ttb_phuket_women",
-    "https://t.me/phuket_official",
-    "https://t.me/itphuket",
-    "https://t.me/forum_phuket",
-    "https://t.me/forum_thailand",
-    "https://t.me/thailand_woman",
-    "https://t.me/phuket_deti",
-    "https://t.me/tailand_medicina",
-    "https://t.me/tailand_viza",
-    "https://t.me/tailand_nedvijimost",
-    "https://t.me/phket",
-    "https://t.me/+KmvadDL4sF0xNGIy",
-    "https://t.me/peredelanoconf",
-]
-
-# List of keywords to search for
-keywords = [
-    "Пластич хирург",
-    "Пластич херург",
-    "Блефаропласт",
-    "Убрать живот",
-    "Липосакц",
-    "Жир отсос",
-    "Жир отсас",
-    "Винир",
-    "Гинеколог",
-    "гениколог",
-    "Хирург",
-    "Херург",
-    "Узи",
-    "кров сдат",
-    "анализ",
-    "Обследовани",
-    "чек ап",
-    "Check up",
-    "Почки",
-    "живот",
-    "грудь",
-    "Стоматолог",
-    "зубн",
-    "пломб",
-    "коронк",
-    "имплант",
-    "отбели",
-    "коррекц зрен",
-    "хрусталик",
-    "Пересад волос",
-    "ортопед",
-    "замен сустав",
-    "операц сустав",
-    "Беременност",
-    "роды",
-    "Бангкок госпитал",
-    "Сирирож госпитал",
-    "Bangkok hospital",
-    "Bumrungrad hospital",
-    "врач",
-]
 
 
 # Call the function
