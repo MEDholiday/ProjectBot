@@ -30,7 +30,7 @@ async def start(message: types.Message):
 @dp.message_handler(lambda message: message.text == "Запустить парсинг данных")
 async def parsing_data(message: types.Message):
     # Отправляем сообщение с информацией о начале сбора данных
-    await message.reply("Начинаю сбор данных с ваших чатов. Сбор данных с учетом фильтров займет примерно 16 минут")
+    await message.reply("Начинаю сбор данных с ваших чатов. Сбор данных с учетом фильтров займет примерно 10 минут")
 
     # Тут выполняется команда для запуска скрипта по сбору данных
     os.system('python pars.py')
