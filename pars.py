@@ -7,16 +7,24 @@ from keywords import keywords
 from chat_links import chat_links
 
 
+def get_author_info(client, chat_id, user_id):
+    try:
+        user = client.get_users(user_id)
+        return f"{user.first_name} {user.last_name} ({user.username})", f"https://t.me/{user.username}"
+    except:
+        return None, None
+
+
 def fetch_messages_from_chats(chat_links, keywords):
     # Create a new Pyrogram client
-    client = Client("my_session")
+    client = Client("my_session", api_id=api_id, api_hash=api_hash)
 
     # Create a new Excel workbook and worksheet
     workbook = xlsxwriter.Workbook('messages.xlsx')
     worksheet = workbook.add_worksheet()
 
     # Write headers to the worksheet
-    worksheet.write_row(0, 0, ["Ключевое слово", "Чат", "Ссылка на чат", "Дата и время", "Текст сообщения"])
+    worksheet.write_row(0, 0, ["Чат", "Ссылка на чат", "Автор", "Ссылка на автора", "Дата и время", "Текст сообщения", "Ссылка на сообщение"])
 
     # Initialize row counter
     row = 1
@@ -54,15 +62,29 @@ def fetch_messages_from_chats(chat_links, keywords):
                         # Check if the message is from today
                         if message.date.date() == current_date:
                             date_time = message.date.strftime("%Y-%m-%d %H:%M:%S")
-                            worksheet.write(row, 0, keyword)
-                            worksheet.write(row, 1, chat.title)
-                            worksheet.write(row, 2, link)  # Add the chat link
-                            worksheet.write(row, 3, date_time)
-                            worksheet.write(row, 4, message.text)
+
+                            # Get author info
+                            author_name, author_link = get_author_info(client, chat_id, message.from_user.id)
+
+                            worksheet.write(row, 0, chat.title)
+                            worksheet.write(row, 1, link)  # Add the chat link
+                            worksheet.write(row, 2, author_name if author_name else "None")
+                            worksheet.write(row, 3, author_link if author_link else "None")
+                            worksheet.write(row, 4, date_time)
+                            worksheet.write(row, 5, message.text)
                             row += 1
 
-                # Sleep for 5 seconds between iterations
-                time.sleep(5)
+                            # Print the received data
+                            print(f"Chat: {chat.title}")
+                            print(f"Chat Link: {link}")
+                            print(f"Author: {author_name if author_name else 'None'}")
+                            print(f"Author Link: {author_link if author_link else 'None'}")
+                            print(f"Date and Time: {date_time}")
+                            print(f"Message Text: {message.text}")
+                            print()
+
+                # Sleep for 2 seconds between iterations
+                time.sleep(2)
 
             except Exception as e:
                 print(f"Error processing chat link: {link}")
