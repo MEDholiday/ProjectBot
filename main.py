@@ -8,7 +8,7 @@ import datetime
 import itertools
 import aiogram.utils.executor
 import pytz
-from config import api_id2, api_hash2
+from config import api_id, api_hash
 from keywords import keywords
 from chat_links import chat_links
 
