@@ -1,5 +1,5 @@
 from pyrogram import Client
-from config import api_id2, api_hash2
+from config import api_id, api_hash
 
 
 # Create a Pyrogram client
