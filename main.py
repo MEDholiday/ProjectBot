@@ -1,7 +1,7 @@
 import logging
 from aiogram import Bot, Dispatcher, types
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
-from config import token2, chat_id
+from config import token, chat_id
 from pyrogram import Client
 import asyncio
 import datetime
