@@ -17,7 +17,7 @@ from chat_links import chat_links
 logging.basicConfig(level=logging.DEBUG)
 
 # Create the bot and dispatcher objects
-bot = Bot(token=token2)
+bot = Bot(token=token)
 dp = Dispatcher(bot, storage=MemoryStorage())
 
 
