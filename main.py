@@ -21,7 +21,7 @@ bot = Bot(token=token)
 dp = Dispatcher(bot, storage=MemoryStorage())
 
 
-async def get_author_info(client, chat_id, user_id):
+async def get_author_info(client, user_id):
     try:
         user = await client.get_users(user_id)
         return f"{user.first_name} {user.last_name} ({user.username})", f"https://t.me/{user.username}"
@@ -69,7 +69,7 @@ async def fetch_messages_from_chats(chat_links, keywords):
                             date_time = message.date.strftime("%Y-%m-%d %H:%M:%S")
 
                             # Get author info
-                            author_name, author_link = await get_author_info(client, chat_id, message.from_user.id)
+                            author_name, author_link = await get_author_info(client, message.from_user.id)
 
                             parsed_message = {
                                 "chat": chat.title,
