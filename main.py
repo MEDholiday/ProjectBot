@@ -96,6 +96,7 @@ async def fetch_messages_from_chats(chat_links, keywords):
 
 
 async def schedule_fetch_and_forward():
+    chat_id = '233349472'
     while True:
         # Get the current time in the user's timezone (you can adjust the timezone as needed)
         tz = pytz.timezone('Asia/Bangkok')  # Replace 'Your_Timezone_Here' with the desired timezone
