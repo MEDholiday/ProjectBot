@@ -71,9 +71,12 @@ async def fetch_messages_from_chats(chat_links, keywords):
                             # Get author info
                             author_name, author_link = await get_author_info(client, message.from_user.id)
 
+                            # Получение ссылки на сообщение
+                            message_link = message.link
+
                             parsed_message = {
                                 "chat": chat.title,
-                                "link": link,
+                                "link": message_link,
                                 "author": author_name,
                                 "author_link": author_link,
                                 "date_time": date_time,
